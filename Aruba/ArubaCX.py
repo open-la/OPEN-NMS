@@ -11,5 +11,3 @@ print(f"Login code from Switch: {login.status_code}")
 print(f"This is Cookie: {login.cookies}")
 logout = session.post("https://192.168.11.254/rest/v1/logout")
 print(f"Logout Code from Switch:{logout.status_code}")
-
-
