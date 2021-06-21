@@ -1,7 +1,7 @@
 from Aruba.ArubaCX import *
-from control.dbconnect import *
+from Control.dbconnect import *
 
 
 def man():
-    db_connect()
+
     get_logs()
