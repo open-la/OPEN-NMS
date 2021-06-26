@@ -127,7 +127,7 @@ $log_count =$data['num']
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Total Sales</div>
+            <div class="box-topic">Total Devices</div>
             <div class="number">38,876</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
