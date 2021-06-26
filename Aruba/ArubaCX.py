@@ -7,12 +7,20 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 creds = {"username": "admin", "password": "Gecko#1991"}
 print("test")
+session = requests.session()
 
 
 class ArubaCX_Switch:
-    def get_logs(self, index=1):
-        session = requests.session()
+    def get_network(self):
+        login = session.post(f"https://{self}/rest/v1/login", data=creds, verify=False)
+        print(f"Login code from Switch: {login.status_code}")
+        get_speed = session.get(f"https://{self}/rest/v1/logs/event?since=today")
 
+        logout = session.post(f"https://{self}/rest/v1/logout")
+        print(f"Logout Code from Switch:{logout.status_code}")
+        data = get_speed.json()
+
+    def get_logs(self, index=1):
         login = session.post(f"https://{self}/rest/v1/login", data=creds, verify=False)
         print(f"Login code from Switch: {login.status_code}")
         print(f"This is Cookie: {login.cookies}")
@@ -27,7 +35,7 @@ class ArubaCX_Switch:
 
         for i in data['entities']:
             index += 1
-            
+
             print(f"Log Processing by Loop: {index} entity is  {i}")
             mydb = mysql.connector.connect(
                 host="localhost",
